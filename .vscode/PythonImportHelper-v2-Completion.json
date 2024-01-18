@@ -1,0 +1,407 @@
+[
+    {
+        "label": "annotations",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "site",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "site",
+        "description": "site",
+        "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "Dash",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "html",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "dash_table",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "dcc",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "callback",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Output",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "Input",
+        "importPath": "dash",
+        "description": "dash",
+        "isExtraImport": true,
+        "detail": "dash",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.graph_objects",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.graph_objects",
+        "description": "plotly.graph_objects",
+        "detail": "plotly.graph_objects",
+        "documentation": {}
+    },
+    {
+        "label": "Patient",
+        "importPath": "patient",
+        "description": "patient",
+        "isExtraImport": true,
+        "detail": "patient",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "bin_dir",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "bin_dir = os.path.dirname(abs_file)\nbase = bin_dir[: -len(\"bin\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"project-py3.11\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.11/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "base",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "base = bin_dir[: -len(\"bin\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"project-py3.11\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.11/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"PATH\"]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"project-py3.11\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.11/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV\"]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"project-py3.11\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.11/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV_PROMPT\"]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV_PROMPT\"] = \"project-py3.11\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.11/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "prev_length",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "prev_length = len(sys.path)\nfor lib in \"../lib/python3.11/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.path[:]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "sys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.real_prefix",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "sys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.prefix",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "sys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "description_card",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def description_card():\n    \"\"\"\n    :return: A Div containing dashboard title & descriptions.\n    \"\"\"\n    return html.Div(\n        id=\"description-card\",\n        children=[\n            html.H5(\"AI Prediction Map\"),\n            html.H3(\"Welcome to the Medical AI Prediction Dashboard\"),\n        ],",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "generate_control_card",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def generate_control_card():\n    \"\"\"\n    :return: A Div containing controls for graphs.\n    \"\"\"\n    values = [\n        f\"{id_list[i]}-{id_list[-1]}\" if i+9 >= len(id_list) else f\"{id_list[i]}-{id_list[i+9]}\" for i in range(len(id_list)) if i % 10 == 0\n    ]\n    return html.Div(\n        id=\"control-card\",\n        children=[",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "generate_heat_map",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def generate_heat_map(current_id_list, text):\n    fig = go.Figure(data=go.Heatmap(\n        z=map_values,\n        y=key_list_show,\n        x=current_id_list,\n        text=text,\n        colorscale=[[0, \"#caf3ff\"], [1, \"#2c82ff\"]],\n        showscale=False,\n        hovertemplate=\"<b> %{x}  %{y} <br><br> %{text}\",\n    ))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "initialize_prediction",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def initialize_prediction(index):\n    header = [\n        generate_table_row((\"\", \"Ground Truth\", \"Prediction\"))\n    ]\n    keys = [(\"Active Phase\", data[index][key_list[0]], data[index][key_list[1]]), (\"ICD10 Binary\", data[index][key_list[2]], data[index][key_list[3]]), (\"ICD10 Multiclass\", data[index][key_list[4]], data[index][key_list[5]])]\n    rows = [generate_table_row(key) for key in keys]\n    header.extend(rows)\n    empty_table = header\n    return empty_table\ndef generate_table_row(keys):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "generate_table_row",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def generate_table_row(keys):\n    \"\"\" Generate table rows.\n    :param id: The ID of table row.\n    :param style: Css style of this row.\n    :param col1 (dict): Defining id and children for the first column.\n    :param col2 (dict): Defining id and children for the second column.\n    :param col3 (dict): Defining id and children for the third column.\n    \"\"\"\n    return html.Div(\n        id=\"row\",",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "generate_app_layout",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def generate_app_layout():\n    app.layout = html.Div(\n        id=\"app-container\",\n        children = [\n            html.Div(\n                id=\"banner\",\n                className=\"banner\",\n                children=[html.Img(src=app.get_asset_url(\"medical_ai_prediction.png\")), description_card()],\n            ),\n            html.Div(",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "update_heat_map",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_heat_map(patient_ids):\n    i = id_list.index(patient_ids.split(\"-\")[0])\n    x = id_list[i:] if i+10 >= len(id_list) else id_list[i:i+10]\n    text = [\n        [\n            None if j+i > len(column) else column[j+i] for j in range(10)\n        ] for column in data_list\n    ]\n    return generate_heat_map(x, text)\n@app.callback(",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "uprate_prediction_table",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def uprate_prediction_table(patient):\n    patient_id = id_list[0] if not patient else patient[\"points\"][0][\"x\"]\n    index = int(patient_id)\n    while index >= len(id_list) or patient_id != id_list[index]:\n        index-=1\n    return [html.H6(f\"Patient's ID: {id_list[index]}\"),\n            html.Div(children=initialize_prediction(index)),\n            html.Hr(),\n            html.Div(children=[html.P(\"Codes\"), html.P(data[index][\"codes\"])])]\n# Run the app",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "df = pd.read_csv('patients.csv')\ndata = df.to_dict(\"records\")\nid_list = [str(patient[\"id\"]) for patient in data]\nkey_list = [key for key in data[0].keys() if key != \"id\" and key != \"codes\"]\nkey_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [\n    patient[key] for patient in data\n    ] for key in data[0].keys() if key != \"id\" and key != \"codes\"\n]",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "data",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "data = df.to_dict(\"records\")\nid_list = [str(patient[\"id\"]) for patient in data]\nkey_list = [key for key in data[0].keys() if key != \"id\" and key != \"codes\"]\nkey_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [\n    patient[key] for patient in data\n    ] for key in data[0].keys() if key != \"id\" and key != \"codes\"\n]\nmap_values = [",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "id_list",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "id_list = [str(patient[\"id\"]) for patient in data]\nkey_list = [key for key in data[0].keys() if key != \"id\" and key != \"codes\"]\nkey_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [\n    patient[key] for patient in data\n    ] for key in data[0].keys() if key != \"id\" and key != \"codes\"\n]\nmap_values = [\n    [",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "key_list",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "key_list = [key for key in data[0].keys() if key != \"id\" and key != \"codes\"]\nkey_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [\n    patient[key] for patient in data\n    ] for key in data[0].keys() if key != \"id\" and key != \"codes\"\n]\nmap_values = [\n    [\n    1 if (i+j) % 2 == 0 else 0 for i in range(len(id_list))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "key_list_show",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "key_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [\n    patient[key] for patient in data\n    ] for key in data[0].keys() if key != \"id\" and key != \"codes\"\n]\nmap_values = [\n    [\n    1 if (i+j) % 2 == 0 else 0 for i in range(len(id_list))\n    ] for j in range(len(key_list))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "data_list",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "data_list = [\n    [\n    patient[key] for patient in data\n    ] for key in data[0].keys() if key != \"id\" and key != \"codes\"\n]\nmap_values = [\n    [\n    1 if (i+j) % 2 == 0 else 0 for i in range(len(id_list))\n    ] for j in range(len(key_list))\n]",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "map_values",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "map_values = [\n    [\n    1 if (i+j) % 2 == 0 else 0 for i in range(len(id_list))\n    ] for j in range(len(key_list))\n]\n# Initialize the app\napp = Dash(\n    __name__,\n    meta_tags=[{\"name\": \"viewport\", \"content\": \"width=device-width, initial-scale=1\"}],\n)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Dash(\n    __name__,\n    meta_tags=[{\"name\": \"viewport\", \"content\": \"width=device-width, initial-scale=1\"}],\n)\napp.title = \"AI Prediction Map\"\ndef description_card():\n    \"\"\"\n    :return: A Div containing dashboard title & descriptions.\n    \"\"\"\n    return html.Div(",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.title",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.title = \"AI Prediction Map\"\ndef description_card():\n    \"\"\"\n    :return: A Div containing dashboard title & descriptions.\n    \"\"\"\n    return html.Div(\n        id=\"description-card\",\n        children=[\n            html.H5(\"AI Prediction Map\"),\n            html.H3(\"Welcome to the Medical AI Prediction Dashboard\"),",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "create_csv",
+        "kind": 2,
+        "importPath": "create_patients",
+        "description": "create_patients",
+        "peekOfCode": "def create_csv():\n    fields = [\"id\", \"active_phase_ground_truth\", \"active_phase_prediction\", \"icd10_multiclass_ground_truth\", \"icd10_multiclass_prediction\", \"icd10_binary_ground_truth\", \"icd10_binary_prediction\", \"codes\"]\n    with open(\"patients.csv\", \"w\") as csv_file:\n        writer = csv.writer(csv_file)\n        writer.writerow(fields)\ndef save_into_csv(**patient):\n    with open(\"patients.csv\", \"a\") as csv_file:\n        writer = csv.DictWriter(csv_file, fieldnames=list(patient.keys()))\n        writer.writerow(patient)\ndef read_patients():",
+        "detail": "create_patients",
+        "documentation": {}
+    },
+    {
+        "label": "save_into_csv",
+        "kind": 2,
+        "importPath": "create_patients",
+        "description": "create_patients",
+        "peekOfCode": "def save_into_csv(**patient):\n    with open(\"patients.csv\", \"a\") as csv_file:\n        writer = csv.DictWriter(csv_file, fieldnames=list(patient.keys()))\n        writer.writerow(patient)\ndef read_patients():\n    with open(os.path.join(os.getcwd(), \"catalog.txt\"), \"r\") as catalog:\n        patient_index = 0\n        current_patient = {}\n        patients = []\n        for line in catalog:",
+        "detail": "create_patients",
+        "documentation": {}
+    },
+    {
+        "label": "read_patients",
+        "kind": 2,
+        "importPath": "create_patients",
+        "description": "create_patients",
+        "peekOfCode": "def read_patients():\n    with open(os.path.join(os.getcwd(), \"catalog.txt\"), \"r\") as catalog:\n        patient_index = 0\n        current_patient = {}\n        patients = []\n        for line in catalog:\n            if \"ID\" in line:\n                current_patient[\"id\"] = int(''.join([i for i in line if i.isdigit()]))\n            elif \"ACTIVE PHASE\" in line:\n                if \"Ground truth\" in line:",
+        "detail": "create_patients",
+        "documentation": {}
+    },
+    {
+        "label": "Patient",
+        "kind": 6,
+        "importPath": "patient",
+        "description": "patient",
+        "peekOfCode": "class Patient:\n    def __init__(self, id, codes,\n                 active_phase_ground_truth, active_phase_prediction,\n                 icd10_multiclass_ground_truth, icd10_multiclass_prediction,\n                 icd10_binary_ground_truth, icd10_binary_prediction\n                 ) -> None:\n        self.id = id\n        self.codes = codes\n        self.active_phase = {}\n        self.active_phase[\"ground_truth\"] = active_phase_ground_truth",
+        "detail": "patient",
+        "documentation": {}
+    }
+]

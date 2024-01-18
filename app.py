@@ -7,7 +7,8 @@ import plotly.graph_objects as go
 df = pd.read_csv('patients.csv')
 data = df.to_dict("records")
 id_list = [str(patient["id"]) for patient in data]
-key_list = [key.replace("_", " ").upper() for key in data[0].keys() if key != "id" and key != "codes"]
+key_list = [key for key in data[0].keys() if key != "id" and key != "codes"]
+key_list_show = [key.replace("_", " ").upper() for key in key_list]
 data_list = [
     [
     patient[key] for patient in data
@@ -35,7 +36,7 @@ def description_card():
         id="description-card",
         children=[
             html.H5("AI Prediction Map"),
-            html.H3("Welcome to the Medical AI Prediction Map Dashboard"),
+            html.H3("Welcome to the Medical AI Prediction Dashboard"),
         ],
     )
 
@@ -50,42 +51,41 @@ def generate_control_card():
     return html.Div(
         id="control-card",
         children=[
-            html.P("Select Patient IDs"),
+            html.P("Select Patient IDs Range"),
             dcc.Dropdown(
-                values, values[0], id="dropdown"
+                options=values, value=values[0], id="dropdown"
             ),
         ],
     )
 
-def generate_heat_map():
+def generate_heat_map(current_id_list, text):
     fig = go.Figure(data=go.Heatmap(
         z=map_values,
-        y=key_list,
-        x=id_list[0:10],
-        text=data_list,
+        y=key_list_show,
+        x=current_id_list,
+        text=text,
         colorscale=[[0, "#caf3ff"], [1, "#2c82ff"]],
         showscale=False,
         hovertemplate="<b> %{x}  %{y} <br><br> %{text}",
     ))
     fig.layout.height=600
     fig.layout.width=1000
-    return dcc.Graph(figure=fig)
+    return fig
 
-def initialize_prediction   ():
-    # header_row
-    patient_id = id_list[0]
+
+def initialize_prediction(index):
     header = [
-        generate_table_row(patient_id, ("", "Ground Truth", "Prediction"))
+        generate_table_row(("", "Ground Truth", "Prediction"))
     ]
-    keys = [("Active Phase", key_list[0], key_list[1]), ("ICD10 Binary", key_list[2], key_list[3]), ("ICD10 Multiclass", key_list[4], key_list[5])]
-    rows = [generate_table_row(patient_id, key) for key in keys]
+    keys = [("Active Phase", data[index][key_list[0]], data[index][key_list[1]]), ("ICD10 Binary", data[index][key_list[2]], data[index][key_list[3]]), ("ICD10 Multiclass", data[index][key_list[4]], data[index][key_list[5]])]
+    rows = [generate_table_row(key) for key in keys]
     header.extend(rows)
     empty_table = header
 
     return empty_table
 
 
-def generate_table_row(patient_id, keys):
+def generate_table_row(keys):
     """ Generate table rows.
 
     :param id: The ID of table row.
@@ -119,31 +119,6 @@ def generate_table_row(patient_id, keys):
     )
 
 
-@callback(
-    Output("heat_map", "children"),
-    Input("dropdown", "value")
-)
-def update_heat_map(patient_ids):
-    i = id_list.index(patient_ids.split("-")[0])
-    x = id_list[i:] if i+10 >= len(id_list) else id_list[i:i+10]
-    text = [
-        [
-            None if j+i > len(column) else column[j+i] for j in range(10)
-        ] for column in data_list
-    ]
-    fig = go.Figure(data=go.Heatmap(
-        z=map_values,
-        y=key_list,
-        x=x,
-        text=data_list,
-        colorscale=[[0, "#caf3ff"], [1, "#2c82ff"]],
-        hovertemplate="<b> ID %{x}:  %{y} <br><br> %{text}",
-        showscale=False
-    ))
-    fig.layout.height=600
-    fig.layout.width=1000
-    return [dcc.Graph(figure=fig)]
-
 def generate_app_layout():
     app.layout = html.Div(
         id="app-container",
@@ -161,15 +136,7 @@ def generate_app_layout():
                         children=[generate_control_card()]
                     ),
                     html.Br(),
-                    html.Div(
-                        id="prediction",
-                        children=[
-                            html.H6(f"Patient's ID: {id_list[0]}"),
-                            html.Div(id="prediction_data", children=initialize_prediction()),
-                            html.Hr(),
-                            html.P("Codes"),
-                            html.Div(children=html.P(data[0]["codes"]))],
-                    ),
+                    html.Div(id="prediction"),
                 ]
             ),            
         html.Div(
@@ -177,13 +144,48 @@ def generate_app_layout():
             className="eight columns",
             children=[
                 html.Div(
-                    id="heat_map",
-                    children=[generate_heat_map()]
+                    id="patient_volume_card",
+                    children=[
+                        html.B("Patient IDs and codes"),
+                        html.Hr(),
+                        dcc.Graph(id="heat_map")
+                    ]
                 )
             ]
         )
     ]
     )
+
+
+@app.callback(
+    Output("heat_map", "figure"),
+    Input("dropdown", "value")
+)
+def update_heat_map(patient_ids):
+    i = id_list.index(patient_ids.split("-")[0])
+    x = id_list[i:] if i+10 >= len(id_list) else id_list[i:i+10]
+    text = [
+        [
+            None if j+i > len(column) else column[j+i] for j in range(10)
+        ] for column in data_list
+    ]
+    return generate_heat_map(x, text)
+
+
+@app.callback(
+    Output("prediction", "children"),
+    Input("heat_map", "clickData")
+)
+def uprate_prediction_table(patient):
+    patient_id = id_list[0] if not patient else patient["points"][0]["x"]
+    index = int(patient_id)
+    while index >= len(id_list) or patient_id != id_list[index]:
+        index-=1
+    return [html.H6(f"Patient's ID: {id_list[index]}"),
+            html.Div(children=initialize_prediction(index)),
+            html.Hr(),
+            html.Div(children=[html.P("Codes"), html.P(data[index]["codes"])])]
+
 
 # Run the app
 if __name__ == '__main__':
