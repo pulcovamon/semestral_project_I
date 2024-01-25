@@ -28,14 +28,14 @@ app = Dash(
     __name__,
     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
 )
-app.title = "AI Prediction Map"
+app.title = "Lung Cancer Patient Catalog"
 
 def description_card():
     return html.Div(
         id="description-card",
         children=[
             html.H5("AI Prediction Map"),
-            html.H3("Welcome to the Lung Cancer Patients Catalog"),
+            html.H3("Welcome to the Lung Cancer Patient Catalog"),
         ],
     )
 
@@ -53,7 +53,7 @@ def generate_control_card():
             html.Br(),
             html.Div(
                 id="dropdown_menu",
-                children=[html.H5("Select Patient ID"), dcc.Dropdown(options=id_list, value=id_list[0], id="dropdown")]
+                children=[html.H5("Select Patient's ID"), dcc.Dropdown(options=id_list, value=id_list[0], id="dropdown")]
             )
         ],
     )
@@ -74,7 +74,7 @@ def generate_heat_map(current_id_list, text):
                       margin={"r":0,"t":0,"l":0,"b":0},
                       font=dict(family="Courier New, monospace", size=14),
                       paper_bgcolor="#daf3ff")
-    return [html.H6(f"Patiets IDs: {current_id_list[0]}-{current_id_list[-1]}  - Map of Codes"), dcc.Graph(id="heat_map", figure=fig)]
+    return [html.H6(f"Patiet IDs: {current_id_list[0]}-{current_id_list[-1]}  - Map of Codes"), dcc.Graph(id="heat_map", figure=fig)]
 
 
 def parse_codes_into_list(key, index):
@@ -128,7 +128,7 @@ def generate_one_patient_map(patient_id):
                       font=dict(family="Courier New, monospace", size=14),
                       margin={"r":0,"t":0,"l":0,"b":0},
                       paper_bgcolor="#daf3ff")
-    return [html.H6(f"Patient ID: {patient_id} - Map of Codes"), dcc.Graph(id="heat_map", figure=fig)]
+    return [html.H6(f"Patient's ID: {patient_id} - Map of Codes"), dcc.Graph(id="heat_map", figure=fig)]
 
 
 def initialize_prediction(index):
@@ -216,8 +216,8 @@ def generate_app_layout():
 def update_dropdown(option):
     if option == 0:
         values = [f"{id_list[i]}-{id_list[-1]}" if i+9 >= len(id_list) else f"{id_list[i]}-{id_list[i+9]}" for i in range(len(id_list)) if i % 10 == 0]
-        return [html.P("Select Range of Patients IDs"), dcc.Dropdown(options=values, value=values[0], id="dropdown")]
-    return [html.P("Select Patient ID"), dcc.Dropdown(options=id_list, value=id_list[0], id="dropdown")]
+        return [html.P("Select Range of Patient IDs"), dcc.Dropdown(options=values, value=values[0], id="dropdown")]
+    return [html.P("Select Patient's ID"), dcc.Dropdown(options=id_list, value=id_list[0], id="dropdown")]
 
 
 @app.callback(

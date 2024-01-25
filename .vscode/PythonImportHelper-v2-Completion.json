@@ -220,7 +220,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def description_card():\n    return html.Div(\n        id=\"description-card\",\n        children=[\n            html.H5(\"AI Prediction Map\"),\n            html.H3(\"Welcome to the Lung Cancer Patients Catalog\"),\n        ],\n    )\ndef generate_control_card():\n    return html.Div(",
+        "peekOfCode": "def description_card():\n    return html.Div(\n        id=\"description-card\",\n        children=[\n            html.H5(\"AI Prediction Map\"),\n            html.H3(\"Welcome to the Lung Cancer Patient Catalog\"),\n        ],\n    )\ndef generate_control_card():\n    return html.Div(",
         "detail": "app",
         "documentation": {}
     },
@@ -310,7 +310,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def update_dropdown(option):\n    if option == 0:\n        values = [f\"{id_list[i]}-{id_list[-1]}\" if i+9 >= len(id_list) else f\"{id_list[i]}-{id_list[i+9]}\" for i in range(len(id_list)) if i % 10 == 0]\n        return [html.P(\"Select Range of Patients IDs\"), dcc.Dropdown(options=values, value=values[0], id=\"dropdown\")]\n    return [html.P(\"Select Patient ID\"), dcc.Dropdown(options=id_list, value=id_list[0], id=\"dropdown\")]\n@app.callback(\n    Output(\"patient_card\", \"children\"),\n    [\n        Input(\"radio_button\", \"value\"),\n        Input(\"dropdown\", \"value\")",
+        "peekOfCode": "def update_dropdown(option):\n    if option == 0:\n        values = [f\"{id_list[i]}-{id_list[-1]}\" if i+9 >= len(id_list) else f\"{id_list[i]}-{id_list[i+9]}\" for i in range(len(id_list)) if i % 10 == 0]\n        return [html.P(\"Select Range of Patient IDs\"), dcc.Dropdown(options=values, value=values[0], id=\"dropdown\")]\n    return [html.P(\"Select Patient's ID\"), dcc.Dropdown(options=id_list, value=id_list[0], id=\"dropdown\")]\n@app.callback(\n    Output(\"patient_card\", \"children\"),\n    [\n        Input(\"radio_button\", \"value\"),\n        Input(\"dropdown\", \"value\")",
         "detail": "app",
         "documentation": {}
     },
@@ -418,7 +418,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Dash(\n    __name__,\n    meta_tags=[{\"name\": \"viewport\", \"content\": \"width=device-width, initial-scale=1\"}],\n)\napp.title = \"AI Prediction Map\"\ndef description_card():\n    return html.Div(\n        id=\"description-card\",\n        children=[\n            html.H5(\"AI Prediction Map\"),",
+        "peekOfCode": "app = Dash(\n    __name__,\n    meta_tags=[{\"name\": \"viewport\", \"content\": \"width=device-width, initial-scale=1\"}],\n)\napp.title = \"Lung Cancer Patient Catalog\"\ndef description_card():\n    return html.Div(\n        id=\"description-card\",\n        children=[\n            html.H5(\"AI Prediction Map\"),",
         "detail": "app",
         "documentation": {}
     },
@@ -427,7 +427,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.title = \"AI Prediction Map\"\ndef description_card():\n    return html.Div(\n        id=\"description-card\",\n        children=[\n            html.H5(\"AI Prediction Map\"),\n            html.H3(\"Welcome to the Lung Cancer Patients Catalog\"),\n        ],\n    )\ndef generate_control_card():",
+        "peekOfCode": "app.title = \"Lung Cancer Patient Catalog\"\ndef description_card():\n    return html.Div(\n        id=\"description-card\",\n        children=[\n            html.H5(\"AI Prediction Map\"),\n            html.H3(\"Welcome to the Lung Cancer Patient Catalog\"),\n        ],\n    )\ndef generate_control_card():",
         "detail": "app",
         "documentation": {}
     },

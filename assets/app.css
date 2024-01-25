@@ -127,6 +127,10 @@ H5, H3, H6, P{
     vertical-align: middle;
 }
 
+#app_icon {
+    padding-right: 20px;
+}
+
 
 /*
   ##Device = Most of the Smartphones Mobiles / ipad (Portrait)
