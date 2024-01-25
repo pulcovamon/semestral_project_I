@@ -229,7 +229,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def generate_control_card():\n    return html.Div(\n        id=\"control-card\",\n        children=[\n            dcc.RadioItems(options=[\n                {\"label\": html.Span(\"1 patient detail\", style={\"font-family\": \"Courier New, monospace\"}),\n                \"value\": 1},\n                {\"label\": html.Span(\"10 patients overview\", style={\"font-family\": \"Courier New, monospace\"}),\n                \"value\": 0}\n                ], labelStyle={\"display\": \"flex\", \"align-items\": \"center\"}, ",
+        "peekOfCode": "def generate_control_card():\n    return html.Div(\n        id=\"control-card\",\n        children=[\n            dcc.RadioItems(\n                options=[\n                    {\n                        \"label\": html.Span(\n                            \"1 patient detail\",\n                            style={\"font-family\": \"Courier New, monospace\"},",
         "detail": "app",
         "documentation": {}
     },
@@ -238,7 +238,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def generate_heat_map(current_id_list, text):\n    fig = go.Figure(data=go.Heatmap(\n        z=map_values,\n        y=key_list_show,\n        x=current_id_list,\n        text=text,\n        colorscale=[[0, \"#b9e9f5\"], [1, \"#00a3cc\"]],\n        showscale=False,\n        hovertemplate=\"<b> %{x}  %{y} <br><br> %{text}\",\n    ))",
+        "peekOfCode": "def generate_heat_map(current_id_list, text):\n    fig = go.Figure(\n        data=go.Heatmap(\n            z=map_values,\n            y=key_list_show,\n            x=current_id_list,\n            text=text,\n            colorscale=[[0, \"#b9e9f5\"], [1, \"#00a3cc\"]],\n            showscale=False,\n            hovertemplate=\"<b> %{x}  %{y} <br><br> %{text}\",",
         "detail": "app",
         "documentation": {}
     },
@@ -247,7 +247,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def parse_codes_into_list(key, index):\n        if key == \"icd10_binary_prediction\":\n            return [value_dict_binary[i] for i in data[index][key].replace(\"]\", \"\").replace(\"[\", \"\").replace(\"'\", \"\").split(\", \")]\n        if key == \"icd10_multiclass_prediction\":\n            return [value_dict_multiclas[i] for i in data[index][key].replace(\"]\", \"\").replace(\"[\", \"\").replace(\"'\", \"\").split(\", \")]\n        return [i for i in data[index][key].replace(\"]\", \"\").replace(\"[\", \"\").replace(\"'\", \"\").split(\", \")]\ndef parse_codes_into_str(key, index):\n    return \", \".join(parse_codes_into_list(key, index))\ndef get_index(patient_id):\n    index = int(patient_id)",
+        "peekOfCode": "def parse_codes_into_list(key, index):\n    if key == \"icd10_binary_prediction\":\n        return [\n            value_dict_binary[i]\n            for i in data[index][key]\n            .replace(\"]\", \"\")\n            .replace(\"[\", \"\")\n            .replace(\"'\", \"\")\n            .split(\", \")\n        ]",
         "detail": "app",
         "documentation": {}
     },
@@ -256,7 +256,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def parse_codes_into_str(key, index):\n    return \", \".join(parse_codes_into_list(key, index))\ndef get_index(patient_id):\n    index = int(patient_id)\n    while index >= len(id_list) or patient_id != id_list[index]:\n        index-=1\n    return index\ndef generate_one_patient_map(patient_id):\n    index = get_index(patient_id if patient_id.isnumeric() else id_list[0])\n    show_data = [parse_codes_into_list(key, index) for key in key_list]",
+        "peekOfCode": "def parse_codes_into_str(key, index):\n    return \", \".join(parse_codes_into_list(key, index))\ndef get_index(patient_id):\n    index = int(patient_id)\n    while index >= len(id_list) or patient_id != id_list[index]:\n        index -= 1\n    return index\ndef generate_one_patient_map(patient_id):\n    index = get_index(patient_id if patient_id.isnumeric() else id_list[0])\n    show_data = [parse_codes_into_list(key, index) for key in key_list]",
         "detail": "app",
         "documentation": {}
     },
@@ -265,7 +265,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_index(patient_id):\n    index = int(patient_id)\n    while index >= len(id_list) or patient_id != id_list[index]:\n        index-=1\n    return index\ndef generate_one_patient_map(patient_id):\n    index = get_index(patient_id if patient_id.isnumeric() else id_list[0])\n    show_data = [parse_codes_into_list(key, index) for key in key_list]\n    keys_to_show = [\"ACTIVE PHASE\", \"ICD10 MULTICLASS\", \"ICD10 BINARY\"]\n    show_data = [",
+        "peekOfCode": "def get_index(patient_id):\n    index = int(patient_id)\n    while index >= len(id_list) or patient_id != id_list[index]:\n        index -= 1\n    return index\ndef generate_one_patient_map(patient_id):\n    index = get_index(patient_id if patient_id.isnumeric() else id_list[0])\n    show_data = [parse_codes_into_list(key, index) for key in key_list]\n    keys_to_show = [\"ACTIVE PHASE\", \"ICD10 MULTICLASS\", \"ICD10 BINARY\"]\n    show_data = [",
         "detail": "app",
         "documentation": {}
     },
@@ -274,7 +274,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def generate_one_patient_map(patient_id):\n    index = get_index(patient_id if patient_id.isnumeric() else id_list[0])\n    show_data = [parse_codes_into_list(key, index) for key in key_list]\n    keys_to_show = [\"ACTIVE PHASE\", \"ICD10 MULTICLASS\", \"ICD10 BINARY\"]\n    show_data = [\n        [[show_data[i][j], show_data[i+1][j]] for j in range(len(show_data[i]))] for i in range(0, 6, 2)\n    ]\n    z_values = [\n        [1 if code[0] == code[1] else 0 for code in code_list] for code_list in show_data\n    ]",
+        "peekOfCode": "def generate_one_patient_map(patient_id):\n    index = get_index(patient_id if patient_id.isnumeric() else id_list[0])\n    show_data = [parse_codes_into_list(key, index) for key in key_list]\n    keys_to_show = [\"ACTIVE PHASE\", \"ICD10 MULTICLASS\", \"ICD10 BINARY\"]\n    show_data = [\n        [[show_data[i][j], show_data[i + 1][j]] for j in range(len(show_data[i]))]\n        for i in range(0, 6, 2)\n    ]\n    z_values = [\n        [1 if code[0] == code[1] else 0 for code in code_list]",
         "detail": "app",
         "documentation": {}
     },
@@ -283,7 +283,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def initialize_prediction(index):\n    header = [\n        generate_table_row((\"\", \"Ground Truth\", \"Prediction\"))\n    ]\n    keys = [(\"Active Phase\", parse_codes_into_str(key_list[0], index), parse_codes_into_str(key_list[1], index)),\n             (\"ICD10 Binary\", parse_codes_into_str(key_list[2], index), parse_codes_into_str(key_list[3], index)),\n             (\"ICD10 Multiclass\", parse_codes_into_str(key_list[4], index), parse_codes_into_str(key_list[5], index))]\n    rows = [generate_table_row(key) for key in keys]\n    header.extend(rows)\n    empty_table = header",
+        "peekOfCode": "def initialize_prediction(index):\n    header = [generate_table_row((\"\", \"Ground Truth\", \"Prediction\"))]\n    keys = [\n        (\n            \"Active Phase\",\n            parse_codes_into_str(key_list[0], index),\n            parse_codes_into_str(key_list[1], index),\n        ),\n        (\n            \"ICD10 Binary\",",
         "detail": "app",
         "documentation": {}
     },
@@ -292,7 +292,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def generate_table_row(keys):\n    return html.Div(\n        id=\"row\",\n        className=\"row table-row\",\n        children=[\n            html.Br(),\n            html.Div(\n                style={\"display\": \"table\", \"height\": \"100%\"},\n                className=\"four columns row-department\",\n                children=html.P(keys[0])",
+        "peekOfCode": "def generate_table_row(keys):\n    return html.Div(\n        id=\"row\",\n        className=\"row table-row\",\n        children=[\n            html.Br(),\n            html.Div(\n                style={\"display\": \"table\", \"height\": \"100%\"},\n                className=\"four columns row-department\",\n                children=html.P(keys[0]),",
         "detail": "app",
         "documentation": {}
     },
@@ -301,7 +301,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def generate_app_layout():\n    app.layout = html.Div(\n        id=\"app-container\",\n        children = [\n            html.Div(\n                id=\"banner\",\n                className=\"banner\",\n                children=[html.Img(src=app.get_asset_url(\"medical_ai_prediction.png\"), id=\"app_icon\"), description_card()],\n            ),\n            html.Div(",
+        "peekOfCode": "def generate_app_layout():\n    app.layout = html.Div(\n        id=\"app-container\",\n        children=[\n            html.Div(\n                id=\"banner\",\n                className=\"banner\",\n                children=[\n                    html.Img(\n                        src=app.get_asset_url(\"medical_ai_prediction.png\"),",
         "detail": "app",
         "documentation": {}
     },
@@ -310,7 +310,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def update_dropdown(option):\n    if option == 0:\n        values = [f\"{id_list[i]}-{id_list[-1]}\" if i+9 >= len(id_list) else f\"{id_list[i]}-{id_list[i+9]}\" for i in range(len(id_list)) if i % 10 == 0]\n        return [html.P(\"Select Range of Patient IDs\"), dcc.Dropdown(options=values, value=values[0], id=\"dropdown\")]\n    return [html.P(\"Select Patient's ID\"), dcc.Dropdown(options=id_list, value=id_list[0], id=\"dropdown\")]\n@app.callback(\n    Output(\"patient_card\", \"children\"),\n    [\n        Input(\"radio_button\", \"value\"),\n        Input(\"dropdown\", \"value\")",
+        "peekOfCode": "def update_dropdown(option):\n    if option == 0:\n        values = [\n            f\"{id_list[i]}-{id_list[-1]}\"\n            if i + 9 >= len(id_list)\n            else f\"{id_list[i]}-{id_list[i+9]}\"\n            for i in range(len(id_list))\n            if i % 10 == 0\n        ]\n        return [",
         "detail": "app",
         "documentation": {}
     },
@@ -319,7 +319,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def update_heat_map(option, value):\n    if option == 0:\n        i = id_list.index(value.split(\"-\")[0])\n        x = id_list[i:] if i+10 >= len(id_list) else id_list[i:i+10]\n        text = [\n            [\n                None if j+i > len(column) else column[j+i] for j in range(10)\n            ] for column in data_list\n        ]\n        return generate_heat_map(x, text)",
+        "peekOfCode": "def update_heat_map(option, value):\n    if option == 0:\n        i = id_list.index(value.split(\"-\")[0])\n        x = id_list[i:] if i + 10 >= len(id_list) else id_list[i : i + 10]\n        text = [\n            [None if j + i > len(column) else column[j + i] for j in range(10)]\n            for column in data_list\n        ]\n        return generate_heat_map(x, text)\n    return generate_one_patient_map(value)",
         "detail": "app",
         "documentation": {}
     },
@@ -328,7 +328,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def uprate_prediction_table(patient, option, value):\n    if option == 0:\n        patient_id = id_list[0] if not patient else patient[\"points\"][0][\"x\"]\n    else:\n        patient_id = value if value.isnumeric() else id_list[0]\n    index = get_index(patient_id)\n    return [html.H6(f\"Patient's ID: {id_list[index]}\"),\n            html.Div(children=initialize_prediction(index)),\n            html.Hr(),\n            html.Div(children=[html.P(\"Codes\"), html.P(data[index][\"codes\"])])]",
+        "peekOfCode": "def uprate_prediction_table(patient, option, value):\n    if option == 0:\n        patient_id = id_list[0] if not patient else patient[\"points\"][0][\"x\"]\n    else:\n        patient_id = value if value.isnumeric() else id_list[0]\n    index = get_index(patient_id)\n    return [\n        html.H6(f\"Patient's ID: {id_list[index]}\"),\n        html.Div(children=initialize_prediction(index)),\n        html.Hr(),",
         "detail": "app",
         "documentation": {}
     },
@@ -337,7 +337,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "df = pd.read_csv('patients.csv')\ndata = df.to_dict(\"records\")\nvalue_dict_multiclas = {\"0\": \"C340\", \"1\": \"C341\", \"2\": \"C342\", \"3\": \"C343\", \"4\": \"C348\", \"5\": \"C349\", \"6\": \"other\"}\nvalue_dict_binary = {\"1\": \"C34\", \"0\": \"other\"}\nid_list = [str(patient[\"id\"]) for patient in data]\nkey_list = [key for key in data[0].keys() if key != \"id\" and key != \"codes\"]\nkey_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [\n    patient[key] for patient in data",
+        "peekOfCode": "df = pd.read_csv(\"patients.csv\")\ndata = df.to_dict(\"records\")\nvalue_dict_multiclas = {\n    \"0\": \"C340\",\n    \"1\": \"C341\",\n    \"2\": \"C342\",\n    \"3\": \"C343\",\n    \"4\": \"C348\",\n    \"5\": \"C349\",\n    \"6\": \"other\",",
         "detail": "app",
         "documentation": {}
     },
@@ -346,7 +346,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "data = df.to_dict(\"records\")\nvalue_dict_multiclas = {\"0\": \"C340\", \"1\": \"C341\", \"2\": \"C342\", \"3\": \"C343\", \"4\": \"C348\", \"5\": \"C349\", \"6\": \"other\"}\nvalue_dict_binary = {\"1\": \"C34\", \"0\": \"other\"}\nid_list = [str(patient[\"id\"]) for patient in data]\nkey_list = [key for key in data[0].keys() if key != \"id\" and key != \"codes\"]\nkey_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [\n    patient[key] for patient in data\n    ] for key in data[0].keys() if key != \"id\" and key != \"codes\"",
+        "peekOfCode": "data = df.to_dict(\"records\")\nvalue_dict_multiclas = {\n    \"0\": \"C340\",\n    \"1\": \"C341\",\n    \"2\": \"C342\",\n    \"3\": \"C343\",\n    \"4\": \"C348\",\n    \"5\": \"C349\",\n    \"6\": \"other\",\n}",
         "detail": "app",
         "documentation": {}
     },
@@ -355,7 +355,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "value_dict_multiclas = {\"0\": \"C340\", \"1\": \"C341\", \"2\": \"C342\", \"3\": \"C343\", \"4\": \"C348\", \"5\": \"C349\", \"6\": \"other\"}\nvalue_dict_binary = {\"1\": \"C34\", \"0\": \"other\"}\nid_list = [str(patient[\"id\"]) for patient in data]\nkey_list = [key for key in data[0].keys() if key != \"id\" and key != \"codes\"]\nkey_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [\n    patient[key] for patient in data\n    ] for key in data[0].keys() if key != \"id\" and key != \"codes\"\n]",
+        "peekOfCode": "value_dict_multiclas = {\n    \"0\": \"C340\",\n    \"1\": \"C341\",\n    \"2\": \"C342\",\n    \"3\": \"C343\",\n    \"4\": \"C348\",\n    \"5\": \"C349\",\n    \"6\": \"other\",\n}\nvalue_dict_binary = {\"1\": \"C34\", \"0\": \"other\"}",
         "detail": "app",
         "documentation": {}
     },
@@ -364,7 +364,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "value_dict_binary = {\"1\": \"C34\", \"0\": \"other\"}\nid_list = [str(patient[\"id\"]) for patient in data]\nkey_list = [key for key in data[0].keys() if key != \"id\" and key != \"codes\"]\nkey_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [\n    patient[key] for patient in data\n    ] for key in data[0].keys() if key != \"id\" and key != \"codes\"\n]\nmap_values = [",
+        "peekOfCode": "value_dict_binary = {\"1\": \"C34\", \"0\": \"other\"}\nid_list = [str(patient[\"id\"]) for patient in data]\nkey_list = [key for key in data[0].keys() if key != \"id\" and key != \"codes\"]\nkey_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [patient[key] for patient in data]\n    for key in data[0].keys()\n    if key != \"id\" and key != \"codes\"\n]\nmap_values = [",
         "detail": "app",
         "documentation": {}
     },
@@ -373,7 +373,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "id_list = [str(patient[\"id\"]) for patient in data]\nkey_list = [key for key in data[0].keys() if key != \"id\" and key != \"codes\"]\nkey_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [\n    patient[key] for patient in data\n    ] for key in data[0].keys() if key != \"id\" and key != \"codes\"\n]\nmap_values = [\n    [",
+        "peekOfCode": "id_list = [str(patient[\"id\"]) for patient in data]\nkey_list = [key for key in data[0].keys() if key != \"id\" and key != \"codes\"]\nkey_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [patient[key] for patient in data]\n    for key in data[0].keys()\n    if key != \"id\" and key != \"codes\"\n]\nmap_values = [\n    [1 if (i + j) % 2 == 0 else 0 for i in range(len(id_list))]",
         "detail": "app",
         "documentation": {}
     },
@@ -382,7 +382,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "key_list = [key for key in data[0].keys() if key != \"id\" and key != \"codes\"]\nkey_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [\n    patient[key] for patient in data\n    ] for key in data[0].keys() if key != \"id\" and key != \"codes\"\n]\nmap_values = [\n    [\n    1 if (i+j) % 2 == 0 else 0 for i in range(len(id_list))",
+        "peekOfCode": "key_list = [key for key in data[0].keys() if key != \"id\" and key != \"codes\"]\nkey_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [patient[key] for patient in data]\n    for key in data[0].keys()\n    if key != \"id\" and key != \"codes\"\n]\nmap_values = [\n    [1 if (i + j) % 2 == 0 else 0 for i in range(len(id_list))]\n    for j in range(len(key_list))",
         "detail": "app",
         "documentation": {}
     },
@@ -391,7 +391,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "key_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [\n    patient[key] for patient in data\n    ] for key in data[0].keys() if key != \"id\" and key != \"codes\"\n]\nmap_values = [\n    [\n    1 if (i+j) % 2 == 0 else 0 for i in range(len(id_list))\n    ] for j in range(len(key_list))",
+        "peekOfCode": "key_list_show = [key.replace(\"_\", \" \").upper() for key in key_list]\ndata_list = [\n    [patient[key] for patient in data]\n    for key in data[0].keys()\n    if key != \"id\" and key != \"codes\"\n]\nmap_values = [\n    [1 if (i + j) % 2 == 0 else 0 for i in range(len(id_list))]\n    for j in range(len(key_list))\n]",
         "detail": "app",
         "documentation": {}
     },
@@ -400,7 +400,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "data_list = [\n    [\n    patient[key] for patient in data\n    ] for key in data[0].keys() if key != \"id\" and key != \"codes\"\n]\nmap_values = [\n    [\n    1 if (i+j) % 2 == 0 else 0 for i in range(len(id_list))\n    ] for j in range(len(key_list))\n]",
+        "peekOfCode": "data_list = [\n    [patient[key] for patient in data]\n    for key in data[0].keys()\n    if key != \"id\" and key != \"codes\"\n]\nmap_values = [\n    [1 if (i + j) % 2 == 0 else 0 for i in range(len(id_list))]\n    for j in range(len(key_list))\n]\n# Initialize the app",
         "detail": "app",
         "documentation": {}
     },
@@ -409,7 +409,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "map_values = [\n    [\n    1 if (i+j) % 2 == 0 else 0 for i in range(len(id_list))\n    ] for j in range(len(key_list))\n]\n# Initialize the app\napp = Dash(\n    __name__,\n    meta_tags=[{\"name\": \"viewport\", \"content\": \"width=device-width, initial-scale=1\"}],\n)",
+        "peekOfCode": "map_values = [\n    [1 if (i + j) % 2 == 0 else 0 for i in range(len(id_list))]\n    for j in range(len(key_list))\n]\n# Initialize the app\napp = Dash(\n    __name__,\n    meta_tags=[{\"name\": \"viewport\", \"content\": \"width=device-width, initial-scale=1\"}],\n)\napp.title = \"Lung Cancer Patient Catalog\"",
         "detail": "app",
         "documentation": {}
     },
