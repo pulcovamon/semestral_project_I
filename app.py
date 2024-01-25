@@ -99,7 +99,7 @@ def get_index(patient_id):
 def generate_one_patient_map(patient_id):
     index = get_index(patient_id if patient_id.isnumeric() else id_list[0])
     show_data = [parse_codes_into_list(key, index) for key in key_list]
-    keys_to_show = ["ICD10 BINARY", "ICD10 MULTICLASS", "ACTIVE PHASE"]
+    keys_to_show = ["ACTIVE PHASE", "ICD10 MULTICLASS", "ICD10 BINARY"]
     show_data = [
         [[show_data[i][j], show_data[i+1][j]] for j in range(len(show_data[i]))] for i in range(0, 6, 2)
     ]
